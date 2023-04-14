@@ -1,4 +1,4 @@
-using Unity.Burst;
+﻿using Unity.Burst;
 using Unity.Collections;
 using Unity.Mathematics;
 using Unity.Profiling;
@@ -12,7 +12,7 @@ namespace Jobs.DOD
     {
         [ReadOnly] public float elapsedTime;
 
-        public void Execute(int index, TransformAccess transform)
+        public void Execute(int index, TransformAccess transform)//这里不是TransformAccessArray而是单个的TransformAccess
         {
             var distance = Vector3.Distance(transform.position, Vector3.zero);
             transform.localPosition += Vector3.up * math.sin(elapsedTime * 3f + distance * 0.2f);
@@ -22,12 +22,13 @@ namespace Jobs.DOD
 
     public class WaveCubesWithJobs : MonoBehaviour
     {
+        //ProfilerMarker<>
         static readonly ProfilerMarker<int> profilerMarker = new ProfilerMarker<int>("WaveCubesWithJobs UpdateTransform", "Objects Count");
         public GameObject cubeAchetype = null;
         [Range(10, 100)] public int xHalfCount = 40;
         [Range(10, 100)] public int zHalfCount = 40;
 
-        private TransformAccessArray transformAccessArray;
+        private TransformAccessArray transformAccessArray; //will be initialized in Start()
 
         void Start()
         {
@@ -58,7 +59,7 @@ namespace Jobs.DOD
 
         private void OnDestroy()
         {
-            transformAccessArray.Dispose();
+            transformAccessArray.Dispose();//dots is unmanaged code, need to be disposed manually
         }
     }
 }
