@@ -1,4 +1,5 @@
 using Jobs.Common; //这个路径中包括了AutoReturnToPool.cs的代码，检测目的地并释放回对象池
+using System.ComponentModel;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
@@ -132,7 +133,22 @@ namespace Jobs.DOD
                 {
                     /*这里和Scene：Cubes的区别在于，generate后没有重新设置其随机位置、随机目的地，这就导致上限10，单次10的时候
                     每一轮的物体都一样！*/
-                    pool.Get();
+                    GameObject cube = pool.Get();
+                    /*if (cube) //尝试重新设置其随机位置、随机目的地
+                    {
+                        Vector3 randGenerationPos = transform.position + new Vector3(Random.Range(-generatorAreaSize.x * 0.5f, generatorAreaSize.x * 0.5f),
+                    0, Random.Range(-generatorAreaSize.z * 0.5f, generatorAreaSize.z * 0.5f));
+                        var component = cube.GetComponent<AutoReturnToPool>();
+                        component.generationPos = randGenerationPos;//给AutoReturnToPool脚本设置初始参数，否则没有初始值
+                        cube.transform.position = randGenerationPos;//给cube设置位置
+
+                        Vector3 randTargetPos = targetArea.transform.position + new Vector3(Random.Range(-targetAreaSize.x * 0.5f, targetAreaSize.x * 0.5f),
+                            0, Random.Range(-targetAreaSize.z * 0.5f, targetAreaSize.z * 0.5f));
+                        randTargetPosArray[k] = randTargetPos;//放到nativeArray中
+                        component.targetPos = randTargetPos;//给AutoReturnToPool脚本设置目的地，用于release
+
+                        transforms[k] = cube.transform;
+                    }*/
                 }
                 else
                 {

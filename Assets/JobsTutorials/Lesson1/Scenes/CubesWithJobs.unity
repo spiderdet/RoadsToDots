@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -363,13 +363,13 @@ MonoBehaviour:
   cubeArchetype: {fileID: 2234016861423463656, guid: c60556dad8edd4fb1b53832a9cfdffaf,
     type: 3}
   targetArea: {fileID: 94522998}
-  generationTotalNum: 2000
+  generationTotalNum: 10
   generationNumPerTicktime: 10
   tickTime: 0.2
   generatorAreaSize: {x: 0, y: 0, z: 0}
   targetAreaSize: {x: 0, y: 0, z: 0}
   rotateSpeed: 180
-  moveSpeed: 5
+  moveSpeed: 80
   collectionChecks: 1
 --- !u!1 &961739749
 GameObject:
