@@ -1,4 +1,4 @@
-using DOTS.DOD.LESSON0;
+﻿using DOTS.DOD.LESSON0;
 using Unity.Assertions;
 using Unity.Burst;
 using Unity.Burst.Intrinsics;
@@ -35,7 +35,7 @@ namespace DOTS.DOD.LESSON2
     }
     
     [BurstCompile]
-    [RequireMatchingQueriesForUpdate]
+    [RequireMatchingQueriesForUpdate]//只有存在有效匹配才执行OnUpdate函数，
     [UpdateInGroup(typeof(CubeRotateWithIJobChunkSystemGroup))]
     public partial struct CubeRotateWithIJobChunkSystem : ISystem
     {

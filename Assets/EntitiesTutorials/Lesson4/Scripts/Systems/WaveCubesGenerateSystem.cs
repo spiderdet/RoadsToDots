@@ -12,7 +12,7 @@ namespace DOTS.DOD.LESSON4
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
-            // 在加载WaveCubeGenerator之前，不应该运行此系统
+            // 在加载WaveCubeGenerator之前，不应该运行此系统，即跳过OnUpdate直到该组件至少在一个entity上存在。
             state.RequireForUpdate<WaveCubeGenerator>();
         }
         

@@ -37,7 +37,7 @@ namespace Jobs.DOD
             {
                 for (var x = -xHalfCount; x < xHalfCount; x++)
                 {
-                    var cube = Instantiate(cubeAchetype);
+                    var cube = Instantiate(cubeAchetype);//这里实例化后得到的是gameobject而不是entity，因此可能cache不友好
                     cube.transform.position = new Vector3(x * 1.1f, 0, z * 1.1f);
                     transformAccessArray.Add(cube.transform);
                 }

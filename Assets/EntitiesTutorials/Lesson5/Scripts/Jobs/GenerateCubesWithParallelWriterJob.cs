@@ -1,4 +1,4 @@
-using DOTS.DOD.LESSON3;
+﻿using DOTS.DOD.LESSON3;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
@@ -19,6 +19,7 @@ namespace DOTS.DOD.LESSON5
         {
             cubes[index] = ecbParallel.Instantiate(index, cubeProtoType);
             ecbParallel.AddComponent<RotateAndMoveSpeed>(index, cubes[index], new RotateAndMoveSpeed
+            //这里第一个参数叫sortkey！方便给playback执行的命令排序，保证逻辑确定性
             {
                 rotateSpeed = math.radians(60.0f),
                 moveSpeed = 5.0f

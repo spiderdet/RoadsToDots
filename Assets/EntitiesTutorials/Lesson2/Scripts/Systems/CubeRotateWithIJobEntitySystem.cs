@@ -1,4 +1,4 @@
-using DOTS.DOD.LESSON0;
+﻿using DOTS.DOD.LESSON0;
 using DOTS.DOD.LESSON2;
 using Unity.Burst;
 using Unity.Entities;
@@ -11,7 +11,7 @@ namespace DOTS.DOD.LESSON2
     partial struct RotateCubeWithJobEntity : IJobEntity
     {
         public float deltaTime;
-        void Execute(ref LocalTransform transform, in RotateSpeed speed)
+        void Execute(ref LocalTransform transform, in RotateSpeed speed)//会再查询拥有这两个组件的entity，查到后对其处理
         {
             transform = transform.RotateY(speed.rotateSpeed * deltaTime);
         }
